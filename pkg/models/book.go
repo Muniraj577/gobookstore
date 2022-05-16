@@ -1,6 +1,6 @@
 package models
 
-import(
+import (
 	"github.com/jinzhu/gorm"
 	"github.com/muniraj577/gobookstore/pkg/config"
 )
@@ -9,7 +9,7 @@ var db *gorm.DB
 
 type Book struct{
 	gorm.Model
-	Name string `gorm:""json:"name"`
+	Name string `gorm:"" json:"name"`
 	Author string `json:"author"`
 	Publication string `json:"publication"`
 }
@@ -32,9 +32,9 @@ func GetAllBooks() []Book{
 	return Books
 }
 
-func GetBookById(Id int64) (*Book, *gorm.DB){
+func GetBookById(Id int64 ) (*Book, *gorm.DB){
 	var getBook Book
-	db:=db.Where("ID=?", Id).Find(&getBook)
+	db := db.Where("ID=?", Id).Find(&getBook)
 	return &getBook, db
 }
 
